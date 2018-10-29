@@ -1,12 +1,13 @@
 language: cpp
 dist: trusty
+sudo: required
 
 before_install:
     - eval "${MATRIX_EVAL}"
 
 install:
   # Install conan
-  - pip install --user -q conan
+  - pip install -q conan
   # Automatic detection of your arch, compiler, etc.
   - conan user
 
