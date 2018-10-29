@@ -7,7 +7,7 @@ before_install:
 
 install:
   # Install conan
-  - pip install -q conan
+  - pip install conan
   # Automatic detection of your arch, compiler, etc.
   - conan user
 
@@ -71,4 +71,4 @@ matrix:
     #   env:
     #      - MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - os: osx
-      osx_image: xcode10
+      osx_image: xcode9.4
