@@ -1,24 +1,30 @@
 build: false
 
-platform: x64
+environment:
+    PYTHON: "C:\\Python27"
+    PYTHON_VERSION: "2.7.8"
+    PYTHON_ARCH: "32"
+
+    CONAN_REFERENCE: "hello/0.1.0"
+    CONAN_USERNAME: "demo"
+    CONAN_LOGIN_USERNAME: "demo"
+    CONAN_CHANNEL: "testing"
+    CONAN_UPLOAD: "https://bintray.com/sdukshis/conan"
+
+    matrix:
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+          CONAN_VISUAL_VERSIONS: 12
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+          CONAN_VISUAL_VERSIONS: 14
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: 15
+
 
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
-  - pip.exe install conan
-  - conan user # Create the conan data directory
-
-build_script:
-  - mkdir build && cd build
-  - conan install .. --build
-  - cmake .. -G "%CMAKE_GENERATOR%"
-  - cmake --build . --config Release
+  - pip.exe install conan --upgrade
+  - pip.exe install conan_package_tools
+  - conan user # It creates the conan data directory
 
 test_script:
-  - cd bin && test_hello.exe
-
-environment:
-  matrix:
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      CMAKE_GENERATOR: Visual Studio 14 2015 Win64
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      CMAKE_GENERATOR: Visual Studio 15 2017 Win64
+  - python build.py
