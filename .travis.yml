@@ -12,7 +12,7 @@ install:
 
 script:
   - mkdir build && cd build
-  - conan install .. --build=all
+  - conan install .. --build
   - cmake ..
   - cmake --build .
   - ./bin/test_hello
@@ -46,6 +46,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - gcc-7
+            - g++-7
       env:
          - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
     # - os: linux
