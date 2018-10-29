@@ -30,8 +30,6 @@ class HelloConan(ConanFile):
         self.copy("*.dylib", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
 
-    def test(self):
-
     def package_info(self):
         self.cpp_info.libs = ["hello"]
 
