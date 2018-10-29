@@ -1,5 +1,7 @@
 language: cpp
 
+python: 3.7
+
 install:
   # Install conan
   - pip3 install -q conan
