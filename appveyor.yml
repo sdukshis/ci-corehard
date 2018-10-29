@@ -14,7 +14,7 @@ build_script:
   - cmake --build . --config Release
 
 test_script:
-  - bin/test_hello
+  - cd bin && test_hello.exe
 
 environment:
   matrix:
