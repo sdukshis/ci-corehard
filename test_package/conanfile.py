@@ -21,6 +21,6 @@ class HelloTestConan(ConanFile):
         self.copy('*.so*', dst='bin', src='lib')
 
     def test(self):
-        if not tools.cross_building(self.settings):
-            os.chdir("bin")
-            self.run(".%stest_hello" % os.sep)
+        # if not tools.cross_building(self.settings):
+        os.chdir("bin")
+        self.run(".%stest_hello" % os.sep)
