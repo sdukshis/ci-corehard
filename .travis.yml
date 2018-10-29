@@ -12,7 +12,7 @@ install:
 
 script:
   - mkdir build && cd build
-  - conan install .. --build=missing
+  - conan install .. --build=all
   - cmake ..
   - cmake --build .
   - ./bin/test_hello
@@ -39,15 +39,15 @@ matrix:
             - g++-6
       env:
          - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-    # - os: linux
-    #   addons:
-    #     apt:
-    #       sources:
-    #         - ubuntu-toolchain-r-test
-    #       packages:
-    #         - gcc-7
-    #   env:
-    #      - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-7
+      env:
+         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
     # - os: linux
     #   addons:
     #     apt:
