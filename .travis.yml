@@ -20,5 +20,5 @@ matrix:
           source:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-5
+            - gсс-5
       env: CXX=g++-5 CC=gcc-5
