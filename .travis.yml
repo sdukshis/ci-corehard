@@ -1,11 +1,8 @@
-language: python
-  python:
-    - "3.6"
-
+language: cpp
 
 install:
   # Install conan
-  - pip3 install -q conan
+  - pip3 install --user -q conan
   # Automatic detection of your arch, compiler, etc.
   - conan user
 
