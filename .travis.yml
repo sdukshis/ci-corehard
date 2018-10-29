@@ -1,4 +1,4 @@
-language: cpp
+dist: trusty
 
 install:
   # Install conan
@@ -12,3 +12,13 @@ script:
   - cmake ..
   - cmake --build .
   - ./bin/test_hello
+
+matrix:
+  include:
+    - addons:
+        apt:
+          source:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
+      env: CXX=g++-5 CC=gcc-5
