@@ -1,8 +1,10 @@
 language: cpp
 
+sudo: true
+
 install:
   # Install conan
-  - pip install conan
+  - pip install -q conan
   # Automatic detection of your arch, compiler, etc.
   - conan user
 
