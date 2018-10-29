@@ -15,10 +15,12 @@ script:
 
 matrix:
   include:
-    - addons:
+    - os: linux
+      addons:
         apt:
-          source:
+          sources:
             - ubuntu-toolchain-r-test
           packages:
-            - gсс-5
-      env: CXX=g++-5 CC=gcc-5
+            - g++-5
+      env:
+         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
