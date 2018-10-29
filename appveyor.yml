@@ -1,7 +1,5 @@
-version: 1.0.{build}
 image: Visual Studio 2015
-platform:
-  - x64
+platform: x64
 
 install:
   - cmmd: set PATH=%PATH%;%PYTHON%/Scripts/
