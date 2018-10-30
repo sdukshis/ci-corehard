@@ -1,9 +1,10 @@
 
 variables:
-    CONAN_USERNAME: "user"
+    CONAN_USERNAME: "admin"
     CONAN_REFERENCE: "hello/0.1.0"
-    CONAN_CHANNEL: "channel"
+    CONAN_CHANNEL: "testing"
     CONAN_LOGIN_USERNAME: "user"
+    CONAN_UPLOAD: http://185.185.69.25:8081/artifactory/api/conan/conan-local
     
 .build-template: &build-template
     before_script:
