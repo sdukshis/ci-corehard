@@ -1,7 +1,7 @@
 
 variables:
     CONAN_USERNAME: "user"
-    CONAN_REFERENCE: "test/0.1.0"
+    CONAN_REFERENCE: "hello/0.1.0"
     CONAN_CHANNEL: "channel"
     CONAN_LOGIN_USERNAME: "user"
     
