@@ -27,5 +27,5 @@ steps:
   displayName: 'Build'
 
 - script: |
-    .build/bin/test_hello
+    ./build/bin/test_hello
   displayName: 'Test'
