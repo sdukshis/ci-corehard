@@ -55,5 +55,5 @@ jobs:
       displayName: 'Build'
 
     - script: |
-        build\bin\test_hello
+        build\Release\test_hello.exe
       displayName: 'Test'
