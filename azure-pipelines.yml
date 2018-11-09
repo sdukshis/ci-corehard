@@ -10,16 +10,14 @@ steps:
 - script: |
     sudo apt update 
     sudo apt install -yy gcc cmake python3-setuptools
+    pip3 install wheel
     pip3 install conan
 
   displayName: "Install build toolchain"
 
 - script: |
     mkdir build && cd build
-    conan user
-    conan install .. --build=missing
-    cmake ..
-    ./bin/test_hello
+    cmake .. -DCMAKE_BUILD_TYPE=Release
   displayName: 'Configure'
 
 - script: |
