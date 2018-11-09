@@ -8,8 +8,8 @@ pool:
 
 steps:
 - script: |
-    apt update 
-    apt install -yy gcc cmake python3-pip
+    sudo apt update 
+    sudo apt install -yy gcc cmake python3-setuptools
     pip3 install conan
 
   displayName: "Install build toolchain"
