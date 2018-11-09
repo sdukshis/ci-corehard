@@ -22,7 +22,8 @@ steps:
   displayName: 'Configure'
 
 - script: |
-    cmake --build build
+    cd build
+    cmake --build .
   displayName: 'Build'
 
 - script: |
