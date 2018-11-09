@@ -3,26 +3,26 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-resources:
-  containers:
-  - container: conangcc7
-    image: lasote/conangcc7
-
 pool:
   vmImage: 'Ubuntu 16.04'
 
-container: conangcc7
-
 steps:
 - script: |
+    apt update 
+    apt install -yy gcc cmake python3-pip
+    pip3 install conan
+
+  displayName: "Install build toolchain"
+
+- script: |
     mkdir build && cd build
+    conan user
+    conan install .. --build=missing
     cmake ..
-    cmake --build .
     ./bin/test_hello
   displayName: 'Configure'
 
 - script: |
-    mkdir build && cd build
     cmake --build .
   displayName: 'Build'
 
