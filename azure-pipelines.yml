@@ -1,0 +1,31 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+resources:
+  containers:
+  - container: conangcc7
+    image: lasote/conangcc7
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+container: conangcc7
+
+steps:
+- script: |
+    mkdir build && cd build
+    cmake ..
+    cmake --build .
+    ./bin/test_hello
+  displayName: 'Configure'
+
+- script: |
+    mkdir build && cd build
+    cmake --build .
+  displayName: 'Build'
+
+- script: |
+    ./bin/test_hello
+  displayName: 'Test'
