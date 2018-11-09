@@ -10,8 +10,9 @@ steps:
 - script: |
     sudo apt update 
     sudo apt install -yy gcc cmake python3-setuptools
-    pip3 install wheel
-    pip3 install conan
+    sudo  pip3 install wheel
+    sudo pip3 install conan
+    conan user
 
   displayName: "Install build toolchain"
 
