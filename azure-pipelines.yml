@@ -3,29 +3,57 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+jobs:
+  - job: Linux
+    pool:
+      vmImage: 'Ubuntu 16.04'
 
-steps:
-- script: |
-    sudo apt update 
-    sudo apt install -yy gcc cmake python3-setuptools
-    sudo  pip3 install wheel
-    sudo pip3 install conan
-    conan user
+    steps:
+    - script: |
+        sudo apt update 
+        sudo apt install -yy gcc cmake python3-setuptools
+        sudo  pip3 install wheel
+        sudo pip3 install conan
+        conan user
 
-  displayName: "Install build toolchain"
+      displayName: "Install build toolchain"
 
-- script: |
-    mkdir build && cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-  displayName: 'Configure'
+    - script: |
+        mkdir build && cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+      displayName: 'Configure'
 
-- script: |
-    cd build
-    cmake --build .
-  displayName: 'Build'
+    - script: |
+        cd build
+        cmake --build .
+      displayName: 'Build'
 
-- script: |
-    ./build/bin/test_hello
-  displayName: 'Test'
+    - script: |
+        ./build/bin/test_hello
+      displayName: 'Test'
+
+  - job: Windows
+    pool:
+      vmImage: 'vs2017-win2016'
+
+    steps:
+    - script: |
+        set PATH=%PATH%;%C:\Python27%\Scripts\
+        pip.exe install conan
+        conan user
+
+      displayName: "Install build toolchain"
+
+    - script: |
+        mkdir build && cd build
+        cmake ..
+      displayName: 'Configure'
+
+    - script: |
+        cd build
+        cmake --build . --config Release
+      displayName: 'Build'
+
+    - script: |
+        build\bin\test_hello
+      displayName: 'Test'
