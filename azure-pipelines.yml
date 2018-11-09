@@ -22,9 +22,9 @@ steps:
   displayName: 'Configure'
 
 - script: |
-    cmake --build .
+    cmake --build build
   displayName: 'Build'
 
 - script: |
-    ./bin/test_hello
+    .build/bin/test_hello
   displayName: 'Test'
