@@ -64,7 +64,7 @@ jobs:
 
     steps:
     - script: |
-        pip.exe install conan
+        pip install conan
         conan user
       displayName: "Install build toolchain"
 
