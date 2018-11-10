@@ -57,3 +57,27 @@ jobs:
     - script: |
         build\Release\test_hello.exe
       displayName: 'Test'
+
+  - job: MacOS
+    pool:
+      vmImage: 'macOS-10.13'
+
+    steps:
+    - script: |
+        pip.exe install conan
+        conan user
+      displayName: "Install build toolchain"
+
+    - script: |
+        mkdir build && cd build
+        cmake ..
+      displayName: 'Configure'
+
+    - script: |
+        cd build
+        cmake --build . --config Release
+      displayName: 'Build'
+
+    - script: |
+        build\Release\test_hello.exe
+      displayName: 'Test'
