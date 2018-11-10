@@ -70,14 +70,14 @@ jobs:
 
     - script: |
         mkdir build && cd build
-        cmake ..
+        cmake .. -DCMAKE_BUILD_TYPE=Release
       displayName: 'Configure'
 
     - script: |
         cd build
-        cmake --build . --config Release
+        cmake --build .
       displayName: 'Build'
 
     - script: |
-        build\Release\test_hello.exe
+        ./build/bin/test_hello
       displayName: 'Test'
